@@ -8,6 +8,38 @@ export default function InputScreen({ onSubmit }) {
   const cardRef    = useRef(null);
   const titleRef   = useRef(null);
   const inputRef   = useRef(null);
+  // Audio de intro (bucle de fondo)
+  useEffect(() => {
+    const bgAudio = new Audio(config.introAudioFile);
+    bgAudio.loop = true;
+    bgAudio.volume = 0.35; 
+
+    const tryPlay = () => {
+      bgAudio.play().then(() => {
+        // Logró reproducir, quitar listeners secretos para no gastar memoria
+        ['mousemove', 'touchstart', 'keydown', 'click'].forEach(evt => 
+          window.removeEventListener(evt, tryPlay)
+        );
+      }).catch(() => {});
+    };
+
+    // Intentar de inmediato (por si estamos en un entorno que lo permite)
+    bgAudio.play().catch(() => {
+      // Bloqueado. Nos agazapamos esperando un movimiento mínimo de mouse o un toque
+      ['mousemove', 'touchstart', 'keydown', 'click'].forEach(evt => 
+        window.addEventListener(evt, tryPlay, { passive: true })
+      );
+    });
+
+    return () => {
+      // Al apagar esta pantalla (pasar al hacking), cortar el audio silencioso y limpiar
+      ['mousemove', 'touchstart', 'keydown', 'click'].forEach(evt => 
+        window.removeEventListener(evt, tryPlay)
+      );
+      bgAudio.pause();
+      bgAudio.src = '';
+    };
+  }, []);
 
   useEffect(() => {
     // Animación de entrada con GSAP

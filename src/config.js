@@ -43,8 +43,9 @@ const appConfig = {
   },
 
   // ─── AUDIO ─────────────────────────────────────────────────
-  // Nombre del archivo de audio en /public/
+  // Nombres de archivos de audio en /public/
   audioFile: "/Welcome to the Game - Hacking Alert.mp3",
+  introAudioFile: "/intro-sound.mp3",
 
   // ─── COLORES (para personalizar si cambia el grupo) ────────
   accentColor: "#00ff41",   // Verde Matrix
