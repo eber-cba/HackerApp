@@ -131,6 +131,33 @@ export default function FinalScreen({ nombre }) {
           </motion.a>
         </motion.div>
 
+        {/* Botón GitHub */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1.2, duration: 0.5 }}
+          style={{ marginTop: '24px', textAlign: 'center' }}
+        >
+          <a
+            href={fs.githubRepoUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{
+              color: 'var(--green-dim)',
+              fontSize: '0.8rem',
+              textDecoration: 'none',
+              borderBottom: '1px solid rgba(0,255,65,0.3)',
+              paddingBottom: '2px',
+              transition: 'all 0.3s',
+              cursor: 'none'
+            }}
+            onMouseOver={(e) => { e.target.style.color = 'var(--green)'; e.target.style.borderColor = 'var(--green)'; }}
+            onMouseOut={(e) => { e.target.style.color = 'var(--green-dim)'; e.target.style.borderColor = 'rgba(0,255,65,0.3)'; }}
+          >
+            &lt;/&gt; {fs.githubBtnText}
+          </a>
+        </motion.div>
+
         {/* Footer */}
         <motion.div
           initial={{ opacity: 0 }}

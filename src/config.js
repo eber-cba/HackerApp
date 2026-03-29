@@ -38,6 +38,8 @@ const appConfig = {
     videoLabel: "👉 Te dejo un video para ir adelantando:",
     videoUrl: "https://youtu.be/Z34BF9PCfYg?si=yGflfV_PM26lVgZG",
     videoBtnText: "Ver video ahora",
+    githubRepoUrl: "https://github.com/eber-cba/HackerApp",
+    githubBtnText: "Ver código fuente",
   },
 
   // ─── AUDIO ─────────────────────────────────────────────────
